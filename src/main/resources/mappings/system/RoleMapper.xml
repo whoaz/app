@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yida.app.system.dao.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.yida.app.system.domain.Role" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="roleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createAt" property="createat" jdbcType="TIMESTAMP" />
+    <result column="updateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="updateAt" property="updateat" jdbcType="TIMESTAMP" />
+    <result column="isDisabled" property="isdisabled" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, roleName, createBy, createAt, updateBy, updateAt, isDisabled, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_role
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yida.app.system.domain.Role" >
+    insert into sys_role (id, roleName, createBy, 
+      createAt, updateBy, updateAt, 
+      isDisabled, remark)
+    values (#{id,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createat,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updateat,jdbcType=TIMESTAMP}, 
+      #{isdisabled,jdbcType=BIT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yida.app.system.domain.Role" >
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rolename != null" >
+        roleName,
+      </if>
+      <if test="createby != null" >
+        createBy,
+      </if>
+      <if test="createat != null" >
+        createAt,
+      </if>
+      <if test="updateby != null" >
+        updateBy,
+      </if>
+      <if test="updateat != null" >
+        updateAt,
+      </if>
+      <if test="isdisabled != null" >
+        isDisabled,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createat != null" >
+        #{createat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updateat != null" >
+        #{updateat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdisabled != null" >
+        #{isdisabled,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yida.app.system.domain.Role" >
+    update sys_role
+    <set >
+      <if test="rolename != null" >
+        roleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        createBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createat != null" >
+        createAt = #{createat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        updateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updateat != null" >
+        updateAt = #{updateat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdisabled != null" >
+        isDisabled = #{isdisabled,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yida.app.system.domain.Role" >
+    update sys_role
+    set roleName = #{rolename,jdbcType=VARCHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createAt = #{createat,jdbcType=TIMESTAMP},
+      updateBy = #{updateby,jdbcType=VARCHAR},
+      updateAt = #{updateat,jdbcType=TIMESTAMP},
+      isDisabled = #{isdisabled,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yida.app.system.dao.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.yida.app.system.domain.Menu" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="menuName" property="menuname" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="isVisible" property="isvisible" jdbcType="BIT" />
+    <result column="isLeaf" property="isleaf" jdbcType="BIT" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createAt" property="createat" jdbcType="TIMESTAMP" />
+    <result column="updateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="updateAt" property="updateat" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pid, menuName, url, type, code, icon, isVisible, isLeaf, createBy, createAt, 
+    updateBy, updateAt, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yida.app.system.domain.Menu" >
+    insert into sys_menu (id, pid, menuName, 
+      url, type, code, icon, 
+      isVisible, isLeaf, createBy, 
+      createAt, updateBy, updateAt, 
+      remark)
+    values (#{id,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{menuname,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{isvisible,jdbcType=BIT}, #{isleaf,jdbcType=BIT}, #{createby,jdbcType=VARCHAR}, 
+      #{createat,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updateat,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yida.app.system.domain.Menu" >
+    insert into sys_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="menuname != null" >
+        menuName,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="isvisible != null" >
+        isVisible,
+      </if>
+      <if test="isleaf != null" >
+        isLeaf,
+      </if>
+      <if test="createby != null" >
+        createBy,
+      </if>
+      <if test="createat != null" >
+        createAt,
+      </if>
+      <if test="updateby != null" >
+        updateBy,
+      </if>
+      <if test="updateat != null" >
+        updateAt,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null" >
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisible != null" >
+        #{isvisible,jdbcType=BIT},
+      </if>
+      <if test="isleaf != null" >
+        #{isleaf,jdbcType=BIT},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createat != null" >
+        #{createat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updateat != null" >
+        #{updateat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yida.app.system.domain.Menu" >
+    update sys_menu
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null" >
+        menuName = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisible != null" >
+        isVisible = #{isvisible,jdbcType=BIT},
+      </if>
+      <if test="isleaf != null" >
+        isLeaf = #{isleaf,jdbcType=BIT},
+      </if>
+      <if test="createby != null" >
+        createBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createat != null" >
+        createAt = #{createat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        updateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updateat != null" >
+        updateAt = #{updateat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yida.app.system.domain.Menu" >
+    update sys_menu
+    set pid = #{pid,jdbcType=VARCHAR},
+      menuName = #{menuname,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      isVisible = #{isvisible,jdbcType=BIT},
+      isLeaf = #{isleaf,jdbcType=BIT},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createAt = #{createat,jdbcType=TIMESTAMP},
+      updateBy = #{updateby,jdbcType=VARCHAR},
+      updateAt = #{updateat,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
